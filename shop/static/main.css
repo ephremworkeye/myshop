@@ -1,0 +1,9 @@
+#banner{
+    background: url("/static/imgs/banner2.jpg") 50% 0 no-repeat fixed;
+    text-align: center;
+    height: 800px;
+    padding: 100px 0 0 0;  
+}
+#banner h1 {
+    color:red;
+}
