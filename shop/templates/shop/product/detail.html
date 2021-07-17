@@ -15,6 +15,11 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <a class="nav-link px-0" href="{{ product.category.get_absolute_url }}"><p class="card-text">{{ product.category }}</p></a>
                     <p class="card-text">${{ product.price }}</p>
+                    <form action="{% url 'cart:cart-add' product.id %}" method="post">
+                        {{ cart_product_form }}
+                        {% csrf_token %}
+                        <input type="submit" value="Add to cart">
+                    </form>
                     <p class="card-text">{{ product.description }}</p>
                 </div>
             </div>

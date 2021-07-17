@@ -1,0 +1,64 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1>Your shopping cart</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th colspan="5">Images</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Remove</th>
+                <th scope="col">Unit price</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            {% with product=item.product %}
+            <tr>
+                <td colspan="5"><img src="{{ product.image.url }}" alt="" style="width: 200px;"></td>
+                <td class="align-middle">{{ product.name }}</td>
+                <td class="align-middle">
+                    <form action="{% url "cart:cart-add" product.id %}" method="post">
+                    {{ item.update_quantity_form.quantity }}
+                    {{ item.update_quantity_form.override }}
+                    <input type="submit" value="Update">
+                    {% csrf_token %}
+                  </form>
+                </td>
+                <td class="align-middle">
+                    <form action="{% url "cart:cart-remove" product.id %}" method="post">
+                        <input type="submit" value="Remove">
+                        {% csrf_token %}
+                    </form>
+                </td>
+                <td class="align-middle">{{ item.price }}</td>
+                <td class="align-middle">{{ item.total_price }}</td>
+            </tr>
+            {% endwith %}
+            {% endfor %}
+            <tr>
+                <td colspan="9">Total</td>
+                <td>{{ cart.get_total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-primary btn-lg float-right" href="{% url 'shop:product-list' %}" role="button">Continue shopping</a>
+            <a class="btn btn-outline-primary btn-lg float-right" href="#" role="button">Checkout</a>
+        </div>
+    </div>
+</div>
+
+    
+
+{% endblock%}

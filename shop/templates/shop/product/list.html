@@ -8,24 +8,26 @@
 <!-- banner -->
 <div class="container-fluid" id="banner">
   <h1>We believe in quality goods</h1>
-</div>
-<div class="container my-2">
-  <div class="container">
-    <h3 class="d-5 ml-0">Categories</h3>
+  <div class="container my-2 left">
     <div class="container">
-      <ul class="nav py-3">
-        <li {% if not category %} class="nav-item ml-0" {% endif %}>
-          <a class="nav-link bg-primary text-white" href="{% url 'shop:product-list' %}">All</a>
-        </li>
-        {% for cat in categories %}
-        <li {% if category.slug == cat.slug %} class="nav-item px-5" {% endif %}>
-          <a class="nav-link bg-primary text-white" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
-        </li>
-        {% endfor %}
-      </ul>
+      <h3 class="d-5 ml-0">Categories</h3>
+      <div class="container">
+        <ul class="nav py-3">
+          <li {% if not category %} class="nav-item ml-0" {% endif %}>
+            <a class="nav-link bg-primary text-white" href="{% url 'shop:product-list' %}">All</a>
+          </li>
+          {% for cat in categories %}
+          <li {% if category.slug == cat.slug %} class="nav-item px-5" {% endif %}>
+            <a class="nav-link bg-primary text-white" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-    
   </div>
+</div>  
+    
+<div class="container py-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     {% for product in products %}
     <div class="col">

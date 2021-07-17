@@ -1,9 +1,14 @@
+body {
+    background: gray;
+}
+
 #banner{
-    background: url("/static/imgs/banner2.jpg") 50% 0 no-repeat fixed;
+    background: url("/static/imgs/banner3.jpg") 50% 0 no-repeat fixed;
     text-align: center;
-    height: 800px;
+    height: 600px;
     padding: 100px 0 0 0;  
+    color: white;
 }
-#banner h1 {
+/* #banner h1 {
     color:red;
-}
+} */
