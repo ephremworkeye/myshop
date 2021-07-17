@@ -34,6 +34,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'shop.apps.ShopConfig', # shop app configured
     'cart.apps.CartConfig', # cart app configured
+    'orders.apps.OrdersConfig', # orders app configured
+    'account.apps.AccountConfig', # account app configured
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
